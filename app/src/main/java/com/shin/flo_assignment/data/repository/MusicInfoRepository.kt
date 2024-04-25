@@ -6,7 +6,7 @@ import com.shin.flo_assignment.data.dto.MusicInfo
 import java.lang.Exception
 
 class MusicInfoRepository(private val floApi: FloApi) {
-    suspend fun getMusicInfos(): MusicInfo {
+    suspend fun getMusicInfo(): MusicInfo {
         return try {
             floApi.getMusicInfos()
         } catch (e: Exception) {

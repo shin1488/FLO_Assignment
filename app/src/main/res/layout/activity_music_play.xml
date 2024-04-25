@@ -15,8 +15,6 @@
         android:layout_height="match_parent"
         tools:context=".presentation.musicPlay.MusicPlayActivity">
 
-
-
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/musicPlay_topGuideline_guideline"
             android:layout_width="wrap_content"
@@ -35,7 +33,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/musicPlay_topGuideline_guideline"
             app:layout_constraintBottom_toBottomOf="@+id/musicPlay_topGuideline_guideline"
-            android:src="@mipmap/ic_launcher"/>
+            app:imageUrl="@{musicPlayViewModel.musicInfo.image}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

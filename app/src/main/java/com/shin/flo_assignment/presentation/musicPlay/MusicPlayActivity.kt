@@ -8,6 +8,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.bumptech.glide.Glide
 import com.shin.flo_assignment.R
 import com.shin.flo_assignment.data.RetrofitInstance
 import com.shin.flo_assignment.data.dto.MusicInfo
@@ -21,6 +22,7 @@ class MusicPlayActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_music_play)
+        binding.lifecycleOwner = this
 
         val api = RetrofitInstance.api
 
@@ -28,25 +30,16 @@ class MusicPlayActivity : AppCompatActivity() {
         val musicPlayViewModelFactory = MusicPlayViewModel.MusicPlayViewModelFactory(musicInfoRepository)
         musicPlayViewModel = ViewModelProvider(this, musicPlayViewModelFactory)[MusicPlayViewModel::class.java]
 
+        binding.musicPlayViewModel = musicPlayViewModel
+
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
-                    musicPlayViewModel.musicInfo.collect { musicInfo ->
-                        if (musicInfo != null) {
-                            updateMusicInfo(musicInfo)
-                        }
+                    musicPlayViewModel.musicInfo.collect{ musicInfo ->
+
                     }
                 }
             }
         }
-    }
-
-    private fun updateMusicInfo(musicInfo: MusicInfo) {
-        Log.d("MusicInfo", "Singer: ${musicInfo.singer}")
-        Log.d("MusicInfo", "Album: ${musicInfo.album}")
-        Log.d("MusicInfo", "Title: ${musicInfo.title}")
-        Log.d("MusicInfo", "duration: ${musicInfo.duration}")
-        Log.d("MusicInfo", "Image URL: ${musicInfo.image}")
-        Log.d("MusicInfo", "Lyrics: ${musicInfo.lyrics}")
     }
 }
