@@ -37,7 +37,7 @@ class MusicPlayViewModel(private val repository: MusicInfoRepository): ViewModel
                     Log.d("MusicInfo", "duration: ${info.duration}")
                     Log.d("MusicInfo", "Image URL: ${info.image}")
                     Log.d("MusicInfo", "Lyrics: ${info.lyrics}")
-                } else println("fuckyou")
+                } else println("failed in fetching infos")
             }
         }
     }
