@@ -35,5 +35,16 @@
             app:layout_constraintBottom_toBottomOf="@+id/musicPlay_topGuideline_guideline"
             app:imageUrl="@{musicPlayViewModel.musicInfo.image}"/>
 
+        <TextView
+            android:id="@+id/musicPlay_title_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:text="Title"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/musicPlay_albumCover_imageView"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
